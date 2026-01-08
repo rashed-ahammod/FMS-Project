@@ -2,30 +2,39 @@
 
 <html>
 <head>
-    <meta charset="UTF-8">
+    
     <title>Registration Page</title>
     
 </head>
 <body>
-    <h1>Register</h1>
-    <form action="/register" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br><br>
+    <h1><center>Register Form</center></h1>
+    <form action="" method="post">
 
-         <label for="password">Password:</label>
+        <label for="name">Username:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+         <label for="dob">Date of Birth:</label><br>
+        <input type="date" id="dob" name="dob" required><br><br>
+
+        <label for="address">Address:</label><br>
+        <input type="text" id="address" name="address" required><br><br>
+       
+
+         <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+         <label for="password">Password:</label><br>
         <input type="password" id="password" name="password" required><br><br>
-         <label for="confirmpassword">Confirm Password:</label>
+
+         <label for="confirmpassword">Confirm Password:</label><br>
         <input type="password" id="confirmpassword" name="confirmpassword" required><br><br>
 
-                <label for="accounttype">Account Type:</label>
+                <label for="accounttype">Account Type:</label><br>
         <select id="accounttype" name="accounttype" required>
             <option value="customer">Customer</option>
             <option value="kitchenstaff">Kitchen Staff</option>
         </select><br><br>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
-        
-
+    
         
         <input type="submit" value="Register">
     </form>
