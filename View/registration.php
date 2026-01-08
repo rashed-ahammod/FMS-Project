@@ -4,6 +4,7 @@
 <head>
     
     <title>Registration Page</title>
+    <link rel="stylesheet" type="text/css" href="../CSS/registration.css">
     
 </head>
 <body>
@@ -36,7 +37,7 @@
         </select><br><br>
     
         
-        <input type="submit" value="Register">
+        <button type="submit">Register</button>
     </form>
 
 </body>
