@@ -9,13 +9,13 @@
 </head>
 <body>
     <h1><center>Register Form</center></h1>
-    <form action="" method="post">
+    <form action="../Controller/registrationController.php" method="post">
 
         <label for="name">Username:</label><br>
         <input type="text" id="name" name="name" required><br><br>
 
-         <label for="dob">Date of Birth:</label><br>
-        <input type="date" id="dob" name="dob" required><br><br>
+         <label for="contactno">Contact No:</label><br>
+        <input type="text" id="contactno" name="contactno" required><br><br>
 
         <label for="address">Address:</label><br>
         <input type="text" id="address" name="address" required><br><br>
