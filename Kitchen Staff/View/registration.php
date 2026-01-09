@@ -11,7 +11,7 @@
     <h1><center>Register Form</center></h1>
     <form action="../Controller/registrationController.php" method="post">
 
-        <label for="name">Username:</label><br>
+        <label for="name">Full Name:</label><br>
         <input type="text" id="name" name="name" required><br><br>
 
          <label for="contactno">Contact No:</label><br>

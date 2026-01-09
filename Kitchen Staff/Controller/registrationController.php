@@ -1,41 +1,40 @@
 <?php
+include '../Model/user.php'; 
 
-function regController(){
-
-
-   require_once '../../Model/Staff/registrationModel.php';
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $name = $_POST['name'];
     $contactno = $_POST['contactno'];
     $address = $_POST['address'];
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $confirmPassword = $_POST['confirmPassword'];
-    $accountType = $_POST['accounttype'];  
-    $user={
-        'name' => $name,
-        'contactno' => $contactno,
+    $confirmPassword = $_POST['confirmpassword']; 
+    $accountType = $_POST['accounttype'];
+
+    if($password !== $confirmPassword){
+        echo "<script>alert('Passwords do not match!'); window.location.href='../View/Registration.php';</script>";
+        exit();
+    }
+
+    $user = [
+        'name'=> $name,
+        'contactno' => $contactno, 
         'address' => $address,
         'email' => $email,
-        'password' => $password,
-        'confirmPassword' => $confirmPassword,
+        'password' => $password, 
         'accountType' => $accountType
-    };
+    ];
+
     $status = regUser($user);
+
     if($status){
-        return true;
+        echo "<script>alert('Registration Successful'); window.location.href='../View/Login.php';</script>";
+        exit();
     } else {
-        return false;
+
     }
-    if($_SERVER['REQUEST_METHOD'] =='POST'){
-        if(regController()){
-            header
-        } else {
-            echo "Registration Failed. Please try again.";
-        }
-    }
-    else {
-        echo "Invalid Request Method.";}
-  
+
+} else {
+    echo "Invalid Request.";
 }
 ?>
