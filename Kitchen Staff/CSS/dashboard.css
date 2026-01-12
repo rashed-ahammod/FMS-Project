@@ -30,3 +30,38 @@ body{
     border-radius:5px;
     overflow:hidden;
 }
+.dashboard{
+    padding:30px;
+    text-align:center;
+
+}
+.dashboard h1{
+    margin-bottom:30px;
+}
+.feature_list{
+    display: grid;
+    gap:20px;
+    max-width:1000px;
+    margin:auto;
+}
+.feature{
+    padding:25px;
+    border-radius:10px;
+    text-decoration:none;
+    color:#000;
+    box-shadow:0 4px 8px rgba(0,0,0,0.3);
+}
+
+.feature:hover{
+    transform:translateY(-5px);
+    box-shadow:0 6px 15px rgba(0,0,0,0.4);
+}
+
+.feature h2{
+    color:#02182c;
+    margin-bottom: 10px;
+}
+.feature p{
+    font-size:14px;
+    color:#333;
+}

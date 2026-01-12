@@ -17,7 +17,7 @@
 </div>
 <div class="dashboard">
     <h1>Kitchen Staff Dashboard<h1>
-        <div class="feature list">
+        <div class="feature_list">
             <a href="" class ="feature">
             <h2>Manage Menu<h2>
                 <p>Add,Update or Remove Menu Items</p>
