@@ -7,7 +7,7 @@
     <div class="dashboard header">
         <div class="logo">Online Food Service Management</div>
         <div class="profile">
-            <span class="profile name">Profile</span>
+            <span class="profile_name">Profile</span>
             <div class="options">
                 <a href="">My Profile</a>
                 <a href="">Change Password</a>
