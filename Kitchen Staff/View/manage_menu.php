@@ -1,5 +1,7 @@
 <?php
 session_start();
+require_once '../Model/manage_menuModel.php';
+$mens=getAllMenu();
 ?>
 
 <!DOCTYPE html>
@@ -33,6 +35,7 @@ session_start();
         <th>Status</th>
         <th>Action</th>
 </tr>
+<?php while($row=mysqli_fetch_assoc($menus)){?>
 
 <tr>
 
@@ -56,6 +59,7 @@ session_start();
 
 </td>
 </tr>
+<?php } ?>
 </table>
 </body>
  </html>
