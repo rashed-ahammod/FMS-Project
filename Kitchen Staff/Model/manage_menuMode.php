@@ -28,4 +28,42 @@ return false;
             return mysqli_query($con,$sql);
 
 }
+
+function updateMenu($menu_id, $name, $price, $description)
+{
+    $con = getConnection();
+
+    $sql = "UPDATE menu 
+            SET name='$name',
+                price='$price',
+                description='$description'
+            WHERE menu_id='$menu_id'";
+
+    return mysqli_query($con, $sql);
+}
+function toggleMenuStatus($menu_id, $status)
+{
+    $con = getConnection();
+
+    $sql = "UPDATE menu 
+            SET availability='$status'
+            WHERE menu_id='$menu_id'";
+
+    return mysqli_query($con, $sql);
+}
+function deleteMenu($menu_id)
+{
+    $con = getConnection();
+    $sql_img = "SELECT image FROM menu WHERE menu_id='$menu_id'";
+    $res = mysqli_query($con, $sql_img);
+    $row = mysqli_fetch_assoc($res);
+
+    if ($row && file_exists("../../images" . $row['image'])) {
+        unlink("../../images" . $row['image']);
+    }
+
+    $sql = "DELETE FROM menu WHERE menu_id='$menu_id'";
+    return mysqli_query($con, $sql);
+}
+
 ?>
