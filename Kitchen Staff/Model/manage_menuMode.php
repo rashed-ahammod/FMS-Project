@@ -17,7 +17,7 @@ function addMenu($data,$files){
 
     $img_ext = strtolower(pathinfo($img_name, PATHINFO_EXTENSION));
     $new_name = time() . "_" . rand(1000, 9999) . "." . $img_ext;
-     $upload_path = "../../images/" . $new_name;
+     $upload_path = "../images/" . $new_name;
 
      if(!move_uploaded_file($tmp_name,$upload_path)){
 return false;
@@ -25,7 +25,7 @@ return false;
      $image_path=$new_name;
         $sql = "INSERT INTO menu (name, price, description, image, availability)
             VALUES ('$name', '$price', '$description', '$image_path', 1)";
-            return mysqli_query($con,$sql);
+            return mysqli_query($conn,$sql);
 
 }
 

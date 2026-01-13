@@ -46,16 +46,17 @@ if(isset($_POST['add'])){
         'description'=>$description
     ];
     $result=addMenu($data,$_FILES);
-    if(!$result){
-        $_SESSION['error']="Failed to add menu item";
-        header('location: ../View/manage_menu.php');
+    if ($result) {
+        $_SESSION['success'] = "Menu added successfully";
+    } else {
+        $_SESSION['error'] = "Failed to add menu";
     }
-    else{
-         $_SESSION['success'] = "Menu added successfully";
-    }
-    header('location: ../View/manage_menu.php');
 
+    header('location: ../View/manage_menu.php');
 }
+    // header('location: ../View/manage_menu.php');
+
+
 
 $rawData = file_get_contents("php://input");
 $data = json_decode($rawData, true);
