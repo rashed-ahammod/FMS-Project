@@ -1,7 +1,9 @@
 <?php
-session-start();
-require_once '../Model/manage_menuModel.php';
-if($_SERVER['REQUEST_ METHOD']=='POST'){
+session_start();
+require_once '../Model/manage_menuMode.php';
+
+
+if(isset($_POST['add'])){
     $name=$_POST['name'];
     $price=$_POST['price'];
     $description=$_POST['description'];
@@ -53,5 +55,35 @@ if($_SERVER['REQUEST_ METHOD']=='POST'){
     }
     header('location: ../View/manage_menu.php');
 
+}
+
+if (isset($_POST['update'])) {
+
+    $menu_id = $_POST['update'];
+    $name = trim($_POST['name']);
+    $price = trim($_POST['price']);
+    $description = trim($_POST['description']);
+
+    if ($name === "" || $price === "" || $description === "") {
+        echo "validation_failed";
+        exit;
+    }
+
+    updateMenu($menu_id, $name, $price, $description);
+    echo "success";
+    exit;
+}
+if (isset($_POST['toggle'])) {
+
+    toggleMenuStatus($_POST['toggle'], $_POST['status']);
+    echo "success";
+    exit;
+}
+
+if (isset($_POST['toggle'])) {
+
+    toggleMenuStatus($_POST['toggle'], $_POST['status']);
+    echo "success";
+    exit;
 }
 ?>
