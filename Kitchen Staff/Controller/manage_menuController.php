@@ -57,33 +57,46 @@ if(isset($_POST['add'])){
 
 }
 
-if (isset($_POST['update'])) {
+$rawData = file_get_contents("php://input");
+$data = json_decode($rawData, true);
 
-    $menu_id = $_POST['update'];
-    $name = trim($_POST['name']);
-    $price = trim($_POST['price']);
-    $description = trim($_POST['description']);
+if (is_array($data) && isset($data['action'])) {
 
-    if ($name === "" || $price === "" || $description === "") {
-        echo "validation_failed";
+    /* ===== UPDATE MENU ===== */
+    if ($data['action'] === 'update') {
+
+        $menu_id = $data['menu_id'];
+        $name = trim($data['name']);
+        $price = trim($data['price']);
+        $description = trim($data['description']);
+
+        if ($name === "" || $price === "" || $description === "") {
+            echo json_encode([
+                "status" => "error",
+                "message" => "Validation failed"
+            ]);
+            exit;
+        }
+
+        $success = updateMenu($menu_id, $name, $price, $description);
+
+        echo json_encode([
+            "status" => $success ? "success" : "error"
+        ]);
         exit;
     }
+    if ($data['action'] === 'toggle') {
 
-    updateMenu($menu_id, $name, $price, $description);
-    echo "success";
-    exit;
-}
-if (isset($_POST['toggle'])) {
+        $menu_id = $data['menu_id'];
+        $status = $data['status'];
 
-    toggleMenuStatus($_POST['toggle'], $_POST['status']);
-    echo "success";
-    exit;
-}
+        $success = toggleMenuStatus($menu_id, $status);
 
-if (isset($_POST['toggle'])) {
-
-    toggleMenuStatus($_POST['toggle'], $_POST['status']);
-    echo "success";
-    exit;
+        echo json_encode([
+            "status" => $success ? "success" : "error",
+            "new_status" => $status
+        ]);
+        exit;
+    }
 }
 ?>

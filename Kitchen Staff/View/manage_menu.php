@@ -52,13 +52,13 @@ $menus=getAllMenu();
 </td>
 
 <td>
-    <button type="button" id="toggle<?=$row['menu_id']?>" class="<?=$row[ 'availability' ] ? 'on' : 'off'?>" onclick="togglestatus(<?= $row['menu_id'] ?>, <?= $row['availability'] ?>)">
-        <?=$row['availability'] ? 'Available' : 'Unavailable'?>
+   <button type="button" id="toggle<?=$row['menu_id']?>" class="<?=$row['availability'] ? 'on' : 'off'?>"
+    onclick="toggleStatus(<?= $row['menu_id'] ?>, <?= $row['availability'] ?>)"> <?=$row['availability'] ? 'Available' : 'Unavailable'?>
 </button>
 </td>
 
 <td>
-    <button type="button" onclick="ajaxUpdte(<?= $row['menu_id'] ?>)">Update</button>
+    <button type="button" onclick="ajaxUpdate(<?= $row['menu_id'] ?>)">Update</button>
     <a href="manage_menuController.php?delete=<?= $row['menu_id'] ?>" onclick="return confirm('Are you sure you want to delete this item?')">Delete</a>
     
 
@@ -66,5 +66,7 @@ $menus=getAllMenu();
 </tr>
 <?php } ?>
 </table>
+<script src="../JS/manage_menu.js"></script>
+
 </body>
  </html>
