@@ -39,6 +39,9 @@ $menus=getAllMenu();
 <?php while($row=mysqli_fetch_assoc($menus)){?>
 
 <tr>
+        <td>
+        <input type="text" id="name<?=$row['menu_id']?>" value="<?=$row['name']?>">
+</td>
 
     <td>
         <input type="number" id="price<?=$row['menu_id']?>" value="<?=$row['price']?>">
