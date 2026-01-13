@@ -25,8 +25,27 @@
 </tr>
 
 <tr>
+
     <td>
         <input type="number" id="price<?=$row['menu_id']?>" value="<?=$row['price']?>">
 </td>
+
+<td>
 <textarea id="desc<?=row['menu_id']?>"><?=$row['description']?></textarea>
 </td>
+
+<td>
+    <button type="button" id="toggle<?=$row['menu_id']?>" class="<?=$row[ 'availability' ] ? 'on' : 'off'?>" onclick="togglestatus()">
+        <?=$row['availability'] ? 'Available' : 'Unavailable'?>
+</button>
+</td>
+
+<td>
+    <button type="button" onclick="ajaxupdte()">Update</button>
+    
+
+</td>
+</tr>
+</table>
+</body>
+ </html>
