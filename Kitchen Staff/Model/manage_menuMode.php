@@ -1,13 +1,13 @@
-<?<php>
-
+<?php
+require_once 'connection.php';
 function getAllMenu(){
-    $con=getConnection();
+    $conn=getConnection();
     $sql="SELECT * FROM menu ORDER BY menu_id DESC";
-    return mysqli_query($con,$sql);
+    return mysqli_query($conn,$sql);
 }
 
 function addMenu($data,$files){
-    $con=getConnection();
+    $conn=getConnection();
     $name=$data['name'];
     $price=$data['price'];
     $description=$data['description'];
@@ -28,3 +28,4 @@ return false;
             return mysqli_query($con,$sql);
 
 }
+?>

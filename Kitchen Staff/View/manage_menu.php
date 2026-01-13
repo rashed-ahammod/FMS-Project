@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once '../Model/manage_menuModel.php';
-$mens=getAllMenu();
+require_once '../Model/manage_menuMode.php';
+$menus=getAllMenu();
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +20,7 @@ $mens=getAllMenu();
         <?php unset($_SESSION['error']);}?>
     
 
-    <form method="POST" action="" enctype="multipart/form-data">
+    <form method="POST" action="manage_menuController.php" enctype="multipart/form-data">
         <input type="text" name="name" placeholder="Food Name" required>
         <input type="number" name="price" placeholder="Price" required>
         <textarea name="description" required></textarea>
