@@ -8,6 +8,7 @@ $mens=getAllMenu();
 <html>
     <head>
         <title>Manage Menu</title>
+        <link rel="stylesheet" href="../CSS/manage_menu.css">
 
 </head>
 <body>
