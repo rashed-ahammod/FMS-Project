@@ -48,7 +48,7 @@ $menus=getAllMenu();
 </td>
 
 <td>
-<textarea id="desc<?=row['menu_id']?>"><?=$row['description']?></textarea>
+<textarea id="desc<?=$row['menu_id']?>"><?=htmlspecialchars($row['description']) ?></textarea>
 </td>
 
 <td>
