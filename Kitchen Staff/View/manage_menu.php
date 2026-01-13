@@ -14,3 +14,19 @@
         <input type="file" name="image" required>
         <button type="submit" name="add">Add Item</button>
 </form>
+
+<table border="1" width="100%" cellpadding="10">
+    <tr>
+        <th>Food Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Action</th>
+</tr>
+
+<tr>
+    <td>
+        <input type="number" id="price<?=$row['menu_id']?>" value="<?=$row['price']?>">
+</td>
+<textarea id="desc<?=row['menu_id']?>"><?=$row['description']?></textarea>
+</td>
