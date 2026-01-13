@@ -18,6 +18,25 @@ if($_SERVER['REQUEST_ METHOD']=='POST'){
         exit;
     }
 
+     $image = $_FILES['image'];
+    $img_name = $image['name'];
+    $img_size = $image['size'];
+    $tmp_name = $image['tmp_name'];
+
+       $img_ext = strtolower(pathinfo($img_name, PATHINFO_EXTENSION));
+    $allowed = ['jpg', 'jpeg', 'png', 'gif'];
+
+        $check = getimagesize($tmp_name);
+    if ($check === false) {
+        $_SESSION['error'] = "File is not a valid image";
+        header('location: ../View/manage_menu.php');
+        exit;
+    }
+        if ($img_size > 500000) {
+        $_SESSION['error'] = "Image size must be less than 500KB";
+        header('location: ../View/manage_menu.php');
+        exit;
+    }
     
     $data=[
         'name'=>$name,
