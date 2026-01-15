@@ -4,57 +4,68 @@ function ajaxUpdate(menuId) {
     let price = document.getElementById('price' + menuId).value.trim();
     let desc  = document.getElementById('desc' + menuId).value.trim();
 
-    fetch('../Controller/manage_menuController.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            action: 'update',
-            menu_id: menuId,
-            name: name,
-            price: price,
-            description: desc
-        })
-    })
-    .then(res => res.json())
-    .then(res => {
-        if (res.status === "success") {
-            alert("Updated successfully ");
-        } else {
-            alert(res.message || "Update failed ");
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "../Controller/manage_menuController.php", true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                let res = JSON.parse(xhr.responseText);
+
+                if (res.status === "success") {
+                    alert("Updated successfully");
+                } else {
+                    alert(res.message || "Update failed");
+                }
+            } else {
+                alert("Server error");
+            }
         }
-    })
-    .catch(() => alert("Server error "));
+    };
+
+    let data = {
+        action: "update",
+        menu_id: menuId,
+        name: name,
+        price: price,
+        description: desc
+    };
+
+    xhr.send(JSON.stringify(data));
 }
+
 
 function toggleStatus(menuId, currentStatus) {
 
-    fetch('../Controller/manage_menuController.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            action: 'toggle',
-            menu_id: menuId,
-            status: currentStatus ? 0 : 1
-        })
-    })
-    .then(res => res.json())
-    .then(res => {
-        if (res.status === "success") {
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "../Controller/manage_menuController.php", true);
+    xhr.setRequestHeader("Content-Type", "application/json");
 
-            let btn = document.getElementById('toggle' + menuId);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
 
-            btn.innerText = res.new_status ? "Available" : "Unavailable";
-            btn.className = res.new_status ? "on" : "off";
+            let res = JSON.parse(xhr.responseText);
 
-            btn.setAttribute(
-                "onclick",
-                `toggleStatus(${menuId}, ${res.new_status})`
-            );
+            if (res.status === "success") {
+
+                let btn = document.getElementById('toggle' + menuId);
+
+                btn.innerText = res.new_status ? "Available" : "Unavailable";
+                btn.className = res.new_status ? "on" : "off";
+                btn.setAttribute(
+                    "onclick",
+                    "toggleStatus(" + menuId + "," + res.new_status + ")"
+                );
+            }
         }
-    })
-    .catch(() => alert("Server error "));
+    };
+
+    let data = {
+        action: "toggle",
+        menu_id: menuId,
+        status: currentStatus ? 0 : 1
+    };
+
+    xhr.send(JSON.stringify(data));
 }
