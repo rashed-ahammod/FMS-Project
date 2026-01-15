@@ -15,16 +15,26 @@ $menus=getAllMenu();
     <h2>Manage Menu<h2>
 
     <?php
-    if(isset($_SESSION['error'])){?>
-        <p class="error"><?=$_SESSION['error'] ?></p>
-        <?php unset($_SESSION['error']);}?>
+    if (isset($_SESSION['error'])) { ?>
+
+    <script>
+        alert("<?php echo $_SESSION['error']; ?>");
+    </script>
+    <?php unset($_SESSION['error']); } ?>
+
+    <?php 
+    if (isset($_SESSION['success'])) { ?>
+    <script>
+        alert("<?php echo $_SESSION['success']; ?>");
+    </script>
+     <?php unset($_SESSION['success']); }?>
     
 
     <form method="POST" action="../Controller/manage_menuController.php" enctype="multipart/form-data">
-        <input type="text" name="name" placeholder="Food Name" required>
-        <input type="number" name="price" placeholder="Price" required>
-        <textarea name="description" required></textarea>
-        <input type="file" name="image" required>
+        <input type="text" name="name" placeholder="Food Name" >
+        <input type="number" name="price" placeholder="Price">
+        <textarea name="description"></textarea>
+        <input type="file" name="image">
         <button type="submit" name="add">Add Item</button>
 </form>
 
