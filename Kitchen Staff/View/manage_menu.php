@@ -36,7 +36,17 @@ $menus=getAllMenu();
         <th>Status</th>
         <th>Action</th>
 </tr>
-<?php while($row=mysqli_fetch_assoc($menus)){?>
+<?php while($row=mysqli_fetch_assoc($menus)){
+    
+        
+        $menuId = $row['menu_id'];
+        $availability = (int)$row['availability'];
+
+        $statusText  = $availability ? 'Available' : 'Unavailable';
+        $statusClass = $availability ? 'on' : 'off';
+    
+    
+    ?>
 
 <tr>
         <td>
@@ -52,14 +62,16 @@ $menus=getAllMenu();
 </td>
 
 <td>
-   <button type="button" id="toggle<?=$row['menu_id']?>" class="<?=$row['availability'] ? 'on' : 'off'?>"
-    onclick="toggleStatus(<?= $row['menu_id'] ?>, <?= $row['availability'] ?>)"> <?=$row['availability'] ? 'Available' : 'Unavailable'?>
-</button>
+     <button type="button" id="toggle<?php echo $menuId; ?>" class="<?php echo $statusClass; ?>"
+     onclick="toggleStatus(<?php echo $menuId; ?>, <?php echo $availability; ?>)">
+    <?php echo $statusText; ?>
+    </button>
 </td>
 
 <td>
-    <button type="button" onclick="ajaxUpdate(<?= $row['menu_id'] ?>)">Update</button>
-    <a href="manage_menuController.php?delete=<?= $row['menu_id'] ?>" onclick="return confirm('Are you sure you want to delete this item?')">Delete</a>
+        <button type="button"  onclick="ajaxUpdate(<?php echo $menuId; ?>)"> Update</button>
+        <a href="manage_menuController.php?delete=<?= $row['menu_id'] ?>" 
+        onclick="return confirm('Are you sure you want to delete this item?')">Delete</a>
     
 
 </td>
