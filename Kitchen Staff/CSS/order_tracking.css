@@ -27,6 +27,9 @@ table th {
     background: #02182c;
     color: #fff;
 }
+table tr:nth-child(even){
+    background: #f9f9f9;
+}
 
 table tr:hover {
     background: #e1f0ff;
