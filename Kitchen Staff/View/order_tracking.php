@@ -29,7 +29,7 @@ $orders = getAllOrders();
         <td><?php echo htmlspecialchars($order['Name']); ?></td>
         <td><?php echo htmlspecialchars($order['food_name']); ?></td>
         <td><?php echo $order['quantity']; ?></td>
-        <td><?php echo $order['status']; ?></td>
+        <td id="status<?php echo $order['order_id']; ?>"><?php echo $order['status']; ?></td>
         <td>
 
             <select onchange="updateOrder(<?php echo $order['order_id']; ?>, this.value)">
