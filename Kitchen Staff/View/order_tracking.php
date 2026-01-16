@@ -43,5 +43,6 @@ $orders = getAllOrders();
 
         <?php }?>
 </table>
+<script src="../JS/order_tracking.js"></script>
     </body>
     </html>
