@@ -2,6 +2,7 @@ function ajaxUpdate(menuId) {
 
     let name  = document.getElementById('name' + menuId).value.trim();
     let price = document.getElementById('price' + menuId).value.trim();
+    let category  = document.getElementById('category' + menuId).value.trim();
     let desc  = document.getElementById('desc' + menuId).value.trim();
 
     let xhr = new XMLHttpRequest();
@@ -29,6 +30,7 @@ function ajaxUpdate(menuId) {
         menu_id: menuId,
         name: name,
         price: price,
+        category: category,
         description: desc
     };
 

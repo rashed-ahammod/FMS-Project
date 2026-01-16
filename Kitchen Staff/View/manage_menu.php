@@ -33,6 +33,7 @@ $menus=getAllMenu();
     <form method="POST" action="../Controller/manage_menuController.php" enctype="multipart/form-data">
         <input type="text" name="name" placeholder="Food Name" >
         <input type="number" name="price" placeholder="Price">
+         <input type="text" name="category" placeholder="Category">
         <textarea name="description"></textarea>
         <input type="file" name="image">
         <button type="submit" name="add">Add Item</button>
@@ -42,6 +43,7 @@ $menus=getAllMenu();
     <tr>
         <th>Food Name</th>
         <th>Price</th>
+        <th>Category</th>
         <th>Description</th>
         <th>Status</th>
         <th>Action</th>
@@ -65,6 +67,10 @@ $menus=getAllMenu();
 
     <td>
         <input type="number" id="price<?=$row['menu_id']?>" value="<?=$row['price']?>">
+</td>
+
+<td>
+        <input type="text" id="category<?=$row['menu_id']?>" value="<?=$row['category']?>">
 </td>
 
 <td>

@@ -10,6 +10,7 @@ function addMenu($data,$files){
     $conn=getConnection();
     $name=$data['name'];
     $price=$data['price'];
+    $category=$data['category'];
     $description=$data['description'];
 
     $img_name = $files['image']['name'];
@@ -23,13 +24,13 @@ function addMenu($data,$files){
 return false;
      }
      $image_path=$new_name;
-        $sql = "INSERT INTO menu (name, price, description, image, availability)
-            VALUES ('$name', '$price', '$description', '$image_path', 1)";
+        $sql = "INSERT INTO menu (name, price, category, description, image, availability)
+            VALUES ('$name', '$price', '$category', '$description', '$image_path', 1)";
             return mysqli_query($conn,$sql);
 
 }
 
-function updateMenu($menu_id, $name, $price, $description)
+function updateMenu($menu_id, $name, $price, $category, $description)
 {
     $con = getConnection();
 

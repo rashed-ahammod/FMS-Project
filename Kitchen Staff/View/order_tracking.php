@@ -43,3 +43,5 @@ $orders = getAllOrders();
 
         <?php }?>
 </table>
+    </body>
+    </html>

@@ -6,10 +6,11 @@ require_once '../Model/manage_menuMode.php';
 if(isset($_POST['add'])){
     $name=$_POST['name'];
     $price=$_POST['price'];
+    $category=$_POST['category'];
     $description=$_POST['description'];
 
 
-        if ($name == "" || $price == "" || $description == "") {
+        if ($name == "" || $price == "" || $category == "" || $description == "") {
         $_SESSION['error'] = "All fields are required";
         header('location: ../View/manage_menu.php');
         exit;
@@ -43,6 +44,7 @@ if(isset($_POST['add'])){
     $data=[
         'name'=>$name,
         'price'=>$price,
+        'category'=>$category,
         'description'=>$description
     ];
     $result=addMenu($data,$_FILES);
