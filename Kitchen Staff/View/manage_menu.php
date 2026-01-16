@@ -12,6 +12,22 @@ $menus=getAllMenu();
 
 </head>
 <body>
+
+<!-- ===== Header / Navigation Bar ===== -->
+<div class="header">
+    <div class="logo">
+        <span>Kitchen Panel</span>
+    </div>
+
+    <div class="nav-buttons">
+        <a href="dashboard.php">Home</a>
+        <a href="order_tracking.php" class="active">Order Tracking</a>
+        <a href="order_history.php">Order History</a>
+        <a href="feedback.php">Feedback</a>
+        <a href="logout.php" class="logout">Logout</a>
+    </div>
+</div>
+
     <h2>Manage Menu<h2>
 
     <?php

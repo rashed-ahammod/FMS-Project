@@ -179,3 +179,47 @@ td a:hover {
         padding: 8px;
     }
 
+
+.header {
+    margin-top: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #02182c;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+}
+
+.logo span {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.nav-buttons a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-left: 15px;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.nav-buttons a:hover {
+    background-color: #1b3a57;
+}
+
+.nav-buttons a.active {
+    background-color: #ffffff;
+    color: #02182c;
+    font-weight: bold;
+}
+
+.nav-buttons a.logout {
+    background-color: #e74c3c;
+}
+
+.nav-buttons a.logout:hover {
+    background-color: #c0392b;
+}
