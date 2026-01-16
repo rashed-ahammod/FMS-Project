@@ -37,7 +37,9 @@ function updateMenu($menu_id, $name, $price, $category, $description)
     $sql = "UPDATE menu 
             SET name='$name',
                 price='$price',
+                category='$category',
                 description='$description'
+            
             WHERE menu_id='$menu_id'";
 
     return mysqli_query($con, $sql);

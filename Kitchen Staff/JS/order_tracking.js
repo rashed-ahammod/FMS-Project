@@ -8,7 +8,7 @@ function updateOrder(order_id, status) {
         status: status
     };
 
-    xhr.send(JSON.stringify(change));
+    
 
         xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
@@ -23,4 +23,5 @@ function updateOrder(order_id, status) {
             }
         }
     };
+    xhr.send(JSON.stringify(change));
 }

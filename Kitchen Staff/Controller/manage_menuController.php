@@ -65,26 +65,28 @@ $data = json_decode($rawData, true);
 
 if (is_array($data) && isset($data['action'])) {
 
-    /* ===== UPDATE MENU ===== */
+ 
     if ($data['action'] === 'update') {
 
         $menu_id = $data['menu_id'];
         $name = trim($data['name']);
         $price = trim($data['price']);
+        $category = trim($data['category']);
         $description = trim($data['description']);
 
-        if ($name === "" || $price === "" || $description === "") {
-            echo json_encode([
-                "status" => "error",
-                "message" => "Validation failed"
-            ]);
+        if ($name === "" || $price === "" || $category === "" || $description === "") {
+         echo json_encode([
+        "success" => false,
+        "message" => "Validation failed"
+]);
+
             exit;
         }
 
-        $success = updateMenu($menu_id, $name, $price, $description);
+        $success = updateMenu($menu_id, $name, $price, $category, $description);
 
         echo json_encode([
-            "status" => $success ? "success" : "error"
+            "success" => $success
         ]);
         exit;
     }
@@ -95,10 +97,12 @@ if (is_array($data) && isset($data['action'])) {
 
         $success = toggleMenuStatus($menu_id, $status);
 
-        echo json_encode([
-            "status" => $success ? "success" : "error",
-            "new_status" => $status
-        ]);
+        
+     echo json_encode([
+     "success" => $success,
+     "new_status" => $status
+]);
+
         exit;
     }
 }

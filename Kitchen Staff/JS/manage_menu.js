@@ -1,31 +1,30 @@
-function ajaxUpdate(menuId) {
+alert("JS LOADED");
 
-    let name  = document.getElementById('name' + menuId).value.trim();
-    let price = document.getElementById('price' + menuId).value.trim();
-    let category  = document.getElementById('category' + menuId).value.trim();
-    let desc  = document.getElementById('desc' + menuId).value.trim();
+function UpdateStatus(menuId) {
 
-    let xhr = new XMLHttpRequest();
+    var name     = document.getElementById('name' + menuId).value.trim();
+    var price    = document.getElementById('price' + menuId).value.trim();
+    var category = document.getElementById('category' + menuId).value.trim();
+    var desc     = document.getElementById('desc' + menuId).value.trim();
+
+    var xhr = new XMLHttpRequest();
     xhr.open("POST", "../Controller/manage_menuController.php", true);
     xhr.setRequestHeader("Content-Type", "application/json");
 
     xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-                let res = JSON.parse(xhr.responseText);
+        if (xhr.readyState === 4 && xhr.status === 200) {
 
-                if (res.status === "success") {
-                    alert("Updated successfully");
-                } else {
-                    alert(res.message || "Update failed");
-                }
+            var data = JSON.parse(xhr.responseText);
+
+            if (data.success) {
+                alert("Menu updated successfully");
             } else {
-                alert("Server error");
+                alert(data.message || "Update failed");
             }
         }
     };
 
-    let data = {
+    var change = {
         action: "update",
         menu_id: menuId,
         name: name,
@@ -34,40 +33,45 @@ function ajaxUpdate(menuId) {
         description: desc
     };
 
-    xhr.send(JSON.stringify(data));
+    xhr.send(JSON.stringify(change));
 }
-
 
 function toggleStatus(menuId, currentStatus) {
 
-    let xhr = new XMLHttpRequest();
+    var xhr = new XMLHttpRequest();
     xhr.open("POST", "../Controller/manage_menuController.php", true);
     xhr.setRequestHeader("Content-Type", "application/json");
+    var change = {
+        action: "toggle",
+        menu_id: menuId,
+        status: currentStatus == 1 ? 0 : 1
+    };
+
+    xhr.send(JSON.stringify(change));
+
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
 
-            let res = JSON.parse(xhr.responseText);
+            var data = JSON.parse(xhr.responseText);
 
-            if (res.status === "success") {
+            if (data.success) {
 
-                let btn = document.getElementById('toggle' + menuId);
+                var btn = document.getElementById('toggle' + menuId);
 
-                btn.innerText = res.new_status ? "Available" : "Unavailable";
-                btn.className = res.new_status ? "on" : "off";
+                btn.innerText = data.new_status == 1 ? "Available" : "Unavailable";
+                btn.className = data.new_status == 1 ? "on" : "off";
+
                 btn.setAttribute(
                     "onclick",
-                    "toggleStatus(" + menuId + "," + res.new_status + ")"
+                    "toggleStatus(" + menuId + "," + data.new_status + ")"
                 );
+
+            } else {
+                alert(data.message || "Status update failed");
             }
         }
     };
 
-    let data = {
-        action: "toggle",
-        menu_id: menuId,
-        status: currentStatus ? 0 : 1
-    };
-
-    xhr.send(JSON.stringify(data));
+  
 }
