@@ -1,5 +1,5 @@
 <?php
-requiire_once '../Model/order_trackingModel.php';
+require_once '../Model/order_trackingModel.php';
 header("Content-Type: application/json");
 $rawData = file_get_contents("php://input");
 

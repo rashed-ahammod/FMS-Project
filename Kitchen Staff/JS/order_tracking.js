@@ -1,6 +1,6 @@
 function updateOrder(order_id, status) {
      var xhr = new XMLHttpRequest();
-     xhr.open("POST", "order_trackingController.php", true);
+     xhr.open("POST", "../Controller/order_trackingController.php", true);
      xhr.setRequestHeader("Content-Type", "application/json");
 
     var change = {
