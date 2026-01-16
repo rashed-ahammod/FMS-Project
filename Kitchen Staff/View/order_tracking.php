@@ -1,5 +1,5 @@
 <?php
-require_once 'ordrModel.php';
+require_once '../Model/order_trackingModel.php';
 $orders = getAllOrders();
 ?>
 
@@ -7,7 +7,7 @@ $orders = getAllOrders();
 <html>
 <head>
     <title>Order Tracking</title>
-    
+    <link rel="stylesheet" type="text/css" href="../CSS/order_tracking.css">
 </head>
 <body>
 
@@ -32,11 +32,11 @@ $orders = getAllOrders();
         <td><?php echo $order['status']; ?></td>
         <td>
 
-            <select onchange="updateOrder(<?php echo $orderId; ?>, this.value)">
-                <option value="Pending"   <?php if ($status == 'Pending')   echo 'selected'; ?>>Pending</option>
-                <option value="Cooking"   <?php if ($status == 'Cooking')   echo 'selected'; ?>>Cooking</option>
-                <option value="Ready"     <?php if ($status == 'Ready')     echo 'selected'; ?>>Ready</option>
-                <option value="Delivered" <?php if ($status == 'Delivered') echo 'selected'; ?>>Delivered</option>
+            <select onchange="updateOrder(<?php echo $order['order_id']; ?>, this.value)">
+                <option value="Pending"   <?php if ($order['status'] == 'Pending')   echo 'selected'; ?>>Pending</option>
+                <option value="Cooking"   <?php if ($order['status'] == 'Cooking')   echo 'selected'; ?>>Cooking</option>
+                <option value="Ready"     <?php if ($order['status'] == 'Ready')     echo 'selected'; ?>>Ready</option>
+                <option value="Delivered" <?php if ($order['status'] == 'Delivered') echo 'selected'; ?>>Delivered</option>
             </select>
         </td>
     </tr>
