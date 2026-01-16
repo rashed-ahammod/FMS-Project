@@ -1,4 +1,5 @@
 <?php
+requiire_once '../Model/order_trackingModel.php';
 header("Content-Type: application/json");
 $rawData = file_get_contents("php://input");
 
@@ -11,4 +12,17 @@ if ($data === null) {
     ]);
     exit;
 }
+
+$order_id = $data['order_id'] ?? null;
+$status   = $data['status'] ?? null;
+
+if (empty($order_id) || empty($status)) {
+    echo json_encode([
+        "success" => false,
+        "message" => "Order ID or status missing"
+    ]);
+    exit;
+}
+
+$result = updateOrderStatus($order_id, $status);
 ?>
