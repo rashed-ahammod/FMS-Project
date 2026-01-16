@@ -12,6 +12,7 @@ h2 {
 
 table {
     background: #fff;
+    border-collapse: collapse;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     border-radius: 10px;
     overflow: hidden;
@@ -25,6 +26,10 @@ table th, table td {
 table th {
     background: #02182c;
     color: #fff;
+}
+
+table tr:hover {
+    background: #e1f0ff;
 }
 
 select {
