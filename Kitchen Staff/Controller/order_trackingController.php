@@ -25,4 +25,17 @@ if (empty($order_id) || empty($status)) {
 }
 
 $result = updateOrderStatus($order_id, $status);
+if ($result) {
+    echo json_encode([
+        "success" => true,
+        "message" => "Order status updated successfully",
+        "order_id" => $order_id,
+        "status" => $status
+    ]);
+} else {
+    echo json_encode([
+        "success" => false,
+        "message" => "Failed to update order status"
+    ]);
+}
 ?>
