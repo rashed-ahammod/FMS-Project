@@ -1,11 +1,12 @@
 <?php
 require_once '../Model/order_trackingModel.php';
-header("Content-Type: application/json");
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $rawData = file_get_contents("php://input");
 
 
 $data = json_decode($rawData, true);
-if ($data === null) {
+if (!isset($data['order_id'], $data['status'])) {
     echo json_encode([
         "success" => false,
         "message" => "Invalid JSON data"
@@ -13,8 +14,8 @@ if ($data === null) {
     exit;
 }
 
-$order_id = $data['order_id'] ?? null;
-$status   = $data['status'] ?? null;
+$order_id = $data['order_id'] 
+$status   = $data['status'] 
 
 if (empty($order_id) || empty($status)) {
     echo json_encode([
@@ -25,17 +26,20 @@ if (empty($order_id) || empty($status)) {
 }
 
 $result = updateOrderStatus($order_id, $status);
+header("Content-Type: application/json");
 if ($result) {
     echo json_encode([
-        "success" => true,
-        "message" => "Order status updated successfully",
+        "success" => $result,
+       // "message" => "Order status updated successfully",
         "order_id" => $order_id,
         "status" => $status
     ]);
 } else {
     echo json_encode([
         "success" => false,
-        "message" => "Failed to update order status"
+       // "message" => "Failed to update order status"
     ]);
+}
+exit;
 }
 ?>
