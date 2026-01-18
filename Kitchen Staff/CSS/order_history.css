@@ -35,3 +35,24 @@ h2 {
     font-weight: bold;
     color: #27ae60;
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+th {
+    background: #02182c;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background: #f9f9f9;
+}

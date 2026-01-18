@@ -1,8 +1,11 @@
+<?php
+require_once '../Controller/historyController';
+?>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Order History</title>
-    <link rel="stylesheet" href="order_history.css">
+    <link rel="stylesheet" href="../CSS/order_history.css">
 </head>
 <body>
 
@@ -21,3 +24,26 @@
     </div>
 
 </div>
+<table>
+<tr>
+    <th>Order ID</th>
+    <th>User ID</th>
+    <th>Total Price</th>
+    <th>Order Time</th>
+    <th>Status</th>
+</tr>
+
+<?php while ($row = mysqli_fetch_assoc($orders)) { ?>
+<tr>
+    <td><?php echo $row['order_id']; ?></td>
+    <td><?php echo $row['user_id']; ?></td>
+    <td><?php echo number_format($row['total_amount'], 2); ?> ৳</td>
+    <td><?php echo $row['order_time']; ?></td>
+    <td><?php echo $row['order_status']; ?></td>
+</tr>
+<?php } ?>
+
+</table>
+
+</body>
+</html>
