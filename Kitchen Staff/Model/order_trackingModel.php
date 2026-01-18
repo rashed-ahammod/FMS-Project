@@ -10,7 +10,7 @@ function getKitchenOrders() {
     m.name AS food_name,
     oi.quantity
 FROM orders o
-LEFT JOIN order_item oi ON o.order_id = oi.order_id
+LEFT JOIN order_items oi ON o.order_id = oi.order_id
 LEFT JOIN menu m ON oi.menu_id = m.menu_id
 WHERE o.order_status != 'Delivered'
 ORDER BY o.order_time ASC
