@@ -21,15 +21,15 @@
 <div class="dashboard">
     <h1>Kitchen Staff Dashboard<h1>
         <div class="feature_list">
-            <a href="" class ="feature">
+            <a href="../View/manage_menu.php" class ="feature">
             <h2>Manage Menu</h2>
                 <p>Add,Update or Remove Menu Items</p>
 </a>
-        <a href="" class ="feature">
+        <a href="../View/order_tracking.php" class ="feature">
             <h2>Update Order Status</h2>
                 <p>Track and Update Order Status</p>
 </a>
-        <a href="" class ="feature">
+        <a href="../View/orderHistory.php" class ="feature">
             <h2>Order History</h2>
                 <p>All Completed Order History</p>
 </a>
