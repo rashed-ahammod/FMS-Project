@@ -16,7 +16,7 @@ function updateOrder(order_id, status) {
             var data = JSON.parse(xhr.responseText);
 
             if (data.success) {
-                document.getElementById("status" + order_id).innerText = status;
+                document.getElementById("status" + orderId).innerText = status;
                 alert("Order updated successfully");
             } else {
                 alert("Failed: " + (data.message || ""));
