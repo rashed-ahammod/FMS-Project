@@ -2,20 +2,21 @@
 require_once '../Model/order_trackingModel.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-$rawData = file_get_contents("php://input");
 
 
-$data = json_decode($rawData, true);
-if (!isset($data['order_id'], $data['status'])) {
+
+  $data = json_decode(file_get_contents("php://input"), true);
+if (!isset($data['order_id'], $data['order_status'])) {
+    header("Content-Type: application/json");
     echo json_encode([
         "success" => false,
-        "message" => "Invalid JSON data"
+       // "message" => "Invalid JSON data"
     ]);
     exit;
 }
 
-$order_id = $data['order_id'] 
-$status   = $data['status'] 
+$order_id = $data['order_id'];
+$status   = $data['order_status'];
 
 if (empty($order_id) || empty($status)) {
     echo json_encode([
@@ -32,7 +33,7 @@ if ($result) {
         "success" => $result,
        // "message" => "Order status updated successfully",
         "order_id" => $order_id,
-        "status" => $status
+        "order_status" => $status
     ]);
 } else {
     echo json_encode([

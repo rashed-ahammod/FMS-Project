@@ -1,5 +1,5 @@
 <?php
-require_once '../Controller/order_trackingController.php';
+require_once '../Model/order_trackingModel.php';
 $orders = getKitchenOrders();
 ?>
 
@@ -7,7 +7,7 @@ $orders = getKitchenOrders();
 <html>
 <head>
     <title>Kitchen Orders</title>
-    <link rel="stylesheet" href="../CSS/order.css">
+    <link rel="stylesheet" href="../CSS/order_tracking.css">
 </head>
 <body>
 
@@ -34,11 +34,11 @@ while ($row = mysqli_fetch_assoc($orders)) {
         }
 
         $currentOrder = $row['order_id'];
-        $currentStatus = $row['status'];
+        $currentStatus = $row['order_status'];
         $items = [];
     }
 
-    $items[] = $row['food_name'] . " x" . $row['quantity'];
+    $items[] = ($row['food_name'] . " x" . ($row['quantity'] ?? 0));
 }
 
 if ($currentOrder !== null) {
@@ -67,6 +67,6 @@ function row($orderId, $items, $status) {
 
 </table>
 
-<script src="../JS/order.js"></script>
+<script src="../JS/order_tracking.js"></script>
 </body>
 </html>
