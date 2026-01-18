@@ -1,0 +1,6 @@
+<?php
+require_once 'test.php';
+
+
+$orders = getOrderHistory();
+$todaySummary = getTodaySummary();
