@@ -1,48 +1,72 @@
 <?php
-require_once '../Model/order_trackingModel.php';
-$orders = getAllOrders();
+require_once '../Controller/order_trackingController.php';
+$orders = getKitchenOrders();
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Order Tracking</title>
-    <link rel="stylesheet" type="text/css" href="../CSS/order_tracking.css">
+    <title>Kitchen Orders</title>
+    <link rel="stylesheet" href="../CSS/order.css">
 </head>
 <body>
 
-<h2>Current Orders</h2>
+<h2>Kitchen Orders</h2>
 
 <table>
+<tr>
+    <th>Order ID</th>
+    <th>Items</th>
+    <th>Status</th>
+    <th>Update</th>
+</tr>
+
+<?php
+$currentOrder = null;
+$items = [];
+
+while ($row = mysqli_fetch_assoc($orders)) {
+
+    if ($currentOrder !== $row['order_id']) {
+
+        if ($currentOrder !== null) {
+            echo row($currentOrder, $items, $currentStatus);
+        }
+
+        $currentOrder = $row['order_id'];
+        $currentStatus = $row['status'];
+        $items = [];
+    }
+
+    $items[] = $row['food_name'] . " x" . $row['quantity'];
+}
+
+if ($currentOrder !== null) {
+    echo row($currentOrder, $items, $currentStatus);
+}
+
+function row($orderId, $items, $status) {
+    $list = implode("<br>", $items);
+
+    return "
     <tr>
-        <th>Order ID</th>
-        <th>Customer</th>
-        <th>Food</th>
-        <th>Quantity</th>
-        <th>Status</th>
-        <th>Update</th>
-    </tr>
-    <?php while ($order = mysqli_fetch_assoc($orders)) { ?>
-
-   <tr id="order<?php echo $order['order_id']; ?>">
-        <td><?php echo $order['order_id']; ?></td>
-        <td><?php echo htmlspecialchars($order['Name']); ?></td>
-        <td><?php echo htmlspecialchars($order['food_name']); ?></td>
-        <td><?php echo $order['quantity']; ?></td>
-        <td id="status<?php echo $order['order_id']; ?>"><?php echo $order['status']; ?></td>
+        <td>$orderId</td>
+        <td>$list</td>
+        <td id='status$orderId'>$status</td>
         <td>
-
-            <select onchange="updateOrder(<?php echo $order['order_id']; ?>, this.value)">
-                <option value="Pending"   <?php if ($order['status'] == 'Pending')   echo 'selected'; ?>>Pending</option>
-                <option value="Cooking"   <?php if ($order['status'] == 'Cooking')   echo 'selected'; ?>>Cooking</option>
-                <option value="Ready"     <?php if ($order['status'] == 'Ready')     echo 'selected'; ?>>Ready</option>
-                <option value="Delivered" <?php if ($order['status'] == 'Delivered') echo 'selected'; ?>>Delivered</option>
+            <select onchange=\"updateOrder($orderId,this.value)\">
+                <option value='Pending' ".($status=='Pending'?'selected':'').">Pending</option>
+                <option value='Cooking' ".($status=='Cooking'?'selected':'').">Cooking</option>
+                <option value='Ready' ".($status=='Ready'?'selected':'').">Ready</option>
+                <option value='Delivered' ".($status=='Delivered'?'selected':'').">Delivered</option>
             </select>
         </td>
-    </tr>
+    </tr>";
+}
+?>
 
-        <?php }?>
 </table>
-<script src="../JS/order_tracking.js"></script>
-    </body>
-    </html>
+
+<script src="../JS/order.js"></script>
+</body>
+</html>
