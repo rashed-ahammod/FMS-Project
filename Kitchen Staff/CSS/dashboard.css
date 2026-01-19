@@ -4,52 +4,41 @@ body{
     background-color:#02182c;
 }
 .dashboard_header{
-    background-color:#011221;
-    justify-content:space-between;
-    color:#fff;
+     display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 15px 30px;
-    display:flex;
-    align-items:center;
+    background-color: #02182c;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
-.logo{
-    font-size:18px;
-    font-weight:bold;
+.dashboard_header .logo {
+     color: #ffffff;
+    font-size: 22px;
+    font-weight: bold;
 }
-.profile{
-    position:relative;
+.logout-box {
+    display: flex;
+    align-items: center;
+}
 
 
+.logout-btn {
+      text-decoration: none;
+    padding: 8px 22px;
+    background-color: #ff4d4d;
+    color: #ffffff ;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid #ff4d4d;
+    transition: all 0.3s ease;
 }
-.profile_name{
-    cursor:pointer;
-    font-size:14px;
-}
-.options{
-    display:none;
-    position:absolute;
-    right:0;
-    background-color:#ffffff;
-    min-width:160px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.3);
-    border-radius:5px;
-    overflow:hidden;
-}
-.options a {
-    display:block;
-    padding: 10-15px;
-    text-decoration:none;
-    color:#02182c;
-    font-size:14px;
-}
-.options a:hover {
-    background-color:#f2f2f2;
-}
-.options.logout{
-    color:red;
-    font-weight:bold;
-}
-.profile:hover.options{
-    display:block;
+
+.logout-btn:hover {
+    background-color: #d93636;
+    border-color: #d93636;
+    box-shadow: 0 4px 12px rgba(255, 77, 77, 0.6);
+    transform: translateY(-1px);
 }
 .dashboard{
     padding:30px;

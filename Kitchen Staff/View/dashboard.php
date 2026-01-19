@@ -2,16 +2,16 @@
 <?php
 session_start();
 
-/* Restore admin from cookie */
+
 if (!isset($_SESSION['admin']) && isset($_COOKIE['remember_role'])) {
     if ($_COOKIE['remember_role'] === 'admin') {
         $_SESSION['admin'] = true;
     }
 }
 
-/* Protect page */
+
 if (!isset($_SESSION['admin'])) {
-    header("Location: ../View/Login.php");
+    header("Location: ../View/login.php");
     exit();
 }
 ?>
@@ -24,17 +24,16 @@ if (!isset($_SESSION['admin'])) {
 
 </head>
 <body>
-    <div class="dashboard_header">
-        <div class="logo">Online Food Service Management</div>
-        <div class="profile">
-            <span class="profile_name">Profile</span>
-            <div class="options">
-                <a href="profile.php">My Profile</a>
-                <a href="">Change Password</a>
-                <a href="">Logout</a>
+<div class="dashboard_header">
+    <div class="logo">Online Food Service Management</div>
+
+    <div class="logout-box">
+        <a href="../Controller/logoutController.php" class="logout-btn">
+            Logout
+        </a>
+    </div>
 </div>
-</div>
-</div>
+
 <div class="dashboard">
     <h1>Kitchen Staff Dashboard<h1>
         <div class="feature_list">

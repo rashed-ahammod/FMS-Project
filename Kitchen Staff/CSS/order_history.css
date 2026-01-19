@@ -87,11 +87,7 @@ tr:nth-child(even) {
     background-color: #1b3a57;
 }
 
-.nav-buttons a.active {
-    background-color: #ffffff;
-    color: #02182c;
-    font-weight: bold;
-}
+
 
 .nav-buttons a.logout {
     background-color: #e74c3c;

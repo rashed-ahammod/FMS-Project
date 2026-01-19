@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 setcookie("remember_role", "admin", time() + (86400 * 7), "/");
             }
 
-            header("Location: /FMS/Kitchen Staff/View/dashboard.php");
+            header("Location: ../View/dashboard.php");
             exit();
         // echo "<script>
         //     alert('Kitchen Staff Login Successful');
