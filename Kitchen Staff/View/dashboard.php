@@ -37,7 +37,7 @@
             <h2>Availability</h2>
                 <p>Set Food item wether availabe or unavailabe</p>
 </a>
-        <a href="" class ="feature">
+        <a href="../View/feedback.php" class ="feature">
             <h2>Review</h2>
                 <p>Customer Feedback</p>
 </a>

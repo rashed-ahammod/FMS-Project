@@ -14,6 +14,7 @@ if (isset($_COOKIE['remember_role'])) {
     setcookie("remember_role", "", time() - 3600, "/");
 }
 
-header("Location: ../View/Login.php");
+header("Location: /FMS/Kitchen%20Staff/View/Login.php");
 exit();
+
 ?>
