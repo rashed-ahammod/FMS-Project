@@ -94,6 +94,7 @@ if (is_array($data) && isset($data['action'])) {
 
             exit;
         }
+        
 
         $success = updateMenu($menu_id, $name, $price, $category, $description);
 
@@ -117,5 +118,17 @@ if (is_array($data) && isset($data['action'])) {
 
         exit;
     }
+        if ($data['action'] === 'delete') {
+
+        $menu_id = intval($data['menu_id']);
+
+        $success = deleteMenu($menu_id);
+
+        echo json_encode([
+            "success" => $success
+        ]);
+        exit;
+    }
 }
+
 ?>

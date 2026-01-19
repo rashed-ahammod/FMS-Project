@@ -1,4 +1,4 @@
-alert("JS LOADED");
+
 
 function UpdateStatus(menuId) {
 
@@ -75,3 +75,33 @@ function toggleStatus(menuId, currentStatus) {
 
   
 }
+function deleteMenu(menuId) {
+
+    if (!confirm("Are you sure you want to delete this item?")) {
+        return;
+    }
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "../Controller/manage_menuController.php", true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+
+            var data = JSON.parse(xhr.responseText);
+
+            if (data.success) {
+                alert("Menu deleted successfully");
+                location.reload();
+            } else {
+                alert("Delete failed");
+            }
+        }
+    };
+
+    xhr.send(JSON.stringify({
+        action: "delete",
+        menu_id: menuId
+    }));
+}
+

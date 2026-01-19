@@ -61,9 +61,12 @@ function deleteMenu($menu_id)
     $res = mysqli_query($con, $sql_img);
     $row = mysqli_fetch_assoc($res);
 
-    if ($row && file_exists("../../images" . $row['image'])) {
-        unlink("../../images" . $row['image']);
-    }
+$imagePath = "../images/" . $row['image'];
+
+if ($row && file_exists($imagePath)) {
+    unlink($imagePath);
+}
+
 
     $sql = "DELETE FROM menu WHERE menu_id='$menu_id'";
     return mysqli_query($con, $sql);
