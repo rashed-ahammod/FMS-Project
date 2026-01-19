@@ -1,0 +1,83 @@
+body
+    {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background-color: #02182c;
+    }
+
+form
+    {
+        background-color: #ada7a7;
+        padding:20px;
+        border-radius: 10px;
+        width: 500px;
+        height: 650px;
+        margin: 0px auto 0 auto;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        
+    }
+
+    h1{
+        text-align: center;
+        color: #589fe2;
+    }
+
+input[type="email"],
+input[type="password"] {
+    border: none;
+    border-bottom: 2px solid #555;
+    width: 95%;
+    padding: 10px;
+    margin-top: 15px;
+    background: transparent;
+}
+
+
+    button
+    {
+        padding: 12px;
+        width: 100%;
+        background-color: #589fe2;
+        border: none;
+        color: white;
+        font-size: 16px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+          display: block;
+    margin: 30px auto 0 auto;
+    }
+    button:hover 
+    {
+        background-color: #3b7dc4;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    .links
+    {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .remember-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 12px 0 18px;
+    font-size: 14px;
+    color: #333;
+}
+
+.remember-box input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+      width: auto;
+    margin: 0;
+    cursor: pointer;
+}
+
+.remember-box label {
+    cursor: pointer;
+    user-select: none;
+}
