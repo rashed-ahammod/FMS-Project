@@ -30,7 +30,7 @@ require_once '../Controller/historyController';
         <a href="../View/order_tracking.php" class="active">Order Tracking</a>
         <a href="../View/manage_menu.php">Manage Menu</a>
         <a href="../View/feedback.php">Feedback</a>
-        <a href="../View/logout.php" class="logout">Logout</a>
+        <a href="../View/logoutController.php" class="logout">Logout</a>
     </div>
 </div>
 
