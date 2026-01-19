@@ -10,8 +10,7 @@ if (!isset($_SESSION['admin']) && isset($_COOKIE['remember_role'])) {
 
 
 if (!isset($_SESSION['admin'])) {
-    header("Location: /FMS/Kitchen Staff/View/Login.php");
-    exit();
+     header("Location: ../View/Login.php");
 }
 
 require_once '../Model/feedbackModel.php';

@@ -16,7 +16,7 @@ if (!isset($_SESSION['user_id']) && isset($_COOKIE['remember_role'])) {
 
 
 if (isset($_SESSION['admin'])) {
-    header("Location: /FMS/Kitchen Staff/View/dashboard.php");
+    header("Location: ../View/dashboard.php");
     exit();
 }
 

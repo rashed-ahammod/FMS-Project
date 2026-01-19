@@ -9,7 +9,7 @@ if (!isset($_SESSION['admin']) && isset($_COOKIE['remember_role'])) {
 }
 
 if (!isset($_SESSION['admin'])) {
-    header("Location: /FMS/View/Login.php");
+    header("Location: ../View/Login.php");
     exit();
 }
 require_once '../Model/order_trackingModel.php';
@@ -32,8 +32,8 @@ $orders = getKitchenOrders();
         <a href="../View/dashboard.php">Home</a>
         <a href="../View/manage_menu.php" class="active">Manage Menu</a>
         <a href="../View/orderHistory.php">Order History</a>
-        <a href="../View/feedback.php">Feedback</a>
-        <a href="/FMS/Kitchen%20Staff/View/Login.php" class="logout">Logout</a>
+        <a href="feedback.php">Feedback</a>
+        <a href="../Controller/logoutController.php" class="logout">Logout</a>
     </div>
 </div>
 

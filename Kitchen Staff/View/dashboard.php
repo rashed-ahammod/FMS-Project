@@ -1,3 +1,20 @@
+
+<?php
+session_start();
+
+/* Restore admin from cookie */
+if (!isset($_SESSION['admin']) && isset($_COOKIE['remember_role'])) {
+    if ($_COOKIE['remember_role'] === 'admin') {
+        $_SESSION['admin'] = true;
+    }
+}
+
+/* Protect page */
+if (!isset($_SESSION['admin'])) {
+    header("Location: ../View/Login.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,13 +48,13 @@
 </a>
         <a href="../View/orderHistory.php" class ="feature">
             <h2>Order History</h2>
-                <p>All Completed Order History</p>
-</a>
+                <p>All Order History</p>
+<!-- </a>
         <a href="" class ="feature">
             <h2>Availability</h2>
                 <p>Set Food item wether availabe or unavailabe</p>
-</a>
-        <a href="../View/feedback.php" class ="feature">
+</a> -->
+        <a href="feedback.php" class ="feature">
             <h2>Review</h2>
                 <p>Customer Feedback</p>
 </a>
