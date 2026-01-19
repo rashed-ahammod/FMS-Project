@@ -7,6 +7,7 @@ $feedbacks = getAllFeedbacks();
 <html>
 <head>
     <title>Customer Feedback</title>
+    <link rel="stylesheet" href="../CSS/feedback.css">
     
 </head>
 <body>

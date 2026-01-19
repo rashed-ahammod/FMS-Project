@@ -13,4 +13,7 @@ if (isset($_POST['feedback_id']) && isset($_POST['reply'])) {
 
     replyFeedback($feedback_id, $reply);
 
+    header("Location: ../View/feedback.php");
+    exit;
 }
+?>
