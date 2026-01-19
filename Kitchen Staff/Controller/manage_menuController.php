@@ -1,5 +1,17 @@
 <?php
 session_start();
+if (!isset($_SESSION['admin']) && isset($_COOKIE['remember_role'])) {
+    if ($_COOKIE['remember_role'] === 'admin') {
+        $_SESSION['admin'] = true;
+    }
+}
+
+
+if (!isset($_SESSION['admin'])) {
+    http_response_code(401);
+    echo json_encode(["success" => false, "message" => "Unauthorized"]);
+    exit();
+}
 require_once '../Model/manage_menuMode.php';
 
 
